@@ -1,0 +1,196 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 20 14.3% 4.1%;
+  --muted: 60 4.8% 95.9%;
+  --muted-foreground: 25 5.3% 44.7%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 20 14.3% 4.1%;
+  --card: 0 0% 100%;
+  --card-foreground: 20 14.3% 4.1%;
+  --border: 20 5.9% 90%;
+  --input: 20 5.9% 90%;
+  --primary: 223 90% 54%;
+  --primary-foreground: 211 100% 99%;
+  --primary-light: 223 90% 94%;
+  --secondary: 271 82% 56%;
+  --secondary-foreground: 24 9.8% 10%;
+  --secondary-light: 271 82% 94%;
+  --accent: 174 100% 48%;
+  --accent-foreground: 24 9.8% 10%;
+  --accent-light: 174 100% 94%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 60 9.1% 97.8%;
+  --ring: 20 14.3% 4.1%;
+  --radius: 0.5rem;
+
+  /* Custom colors */
+  --dark: 230 47% 14%;
+  --dark-light: 231 30% 20%;
+  --dark-dark: 233 44% 10%;
+  --light: 224 100% 98%;
+  --light-dark: 218 27% 92%;
+  --success: 160 100% 44%;
+  --error: 349 100% 68%;
+  --chart-1: 223 90% 54%;
+  --chart-2: 271 82% 56%;
+  --chart-3: 174 100% 48%;
+  --chart-4: 33 100% 50%;
+  --chart-5: 349 100% 68%;
+}
+
+.dark {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --primary: 223 90% 54%;
+  --primary-foreground: 211 100% 99%;
+  --secondary: 271 82% 56%;
+  --secondary-foreground: 0 0% 98%;
+  --accent: 174 100% 48%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 240 4.9% 83.9%;
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-light text-foreground scroll-smooth overflow-x-hidden;
+  }
+}
+
+@layer components {
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
+  }
+
+  .accent-gradient {
+    @apply bg-gradient-to-r from-accent to-success bg-clip-text text-transparent;
+  }
+
+  .btn-hover-effect {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
+  }
+
+  .glow-effect {
+    @apply hover:shadow-[0_0_24px_rgba(0,245,212,0.4)];
+  }
+
+  .backdrop-blur {
+    @apply backdrop-blur-md;
+  }
+
+  .feature-card {
+    @apply transition-all duration-300;
+  }
+
+  .feature-card:hover {
+    @apply transform -translate-y-2;
+  }
+
+  .feature-card:hover .card-icon {
+    @apply transform -translate-y-1 filter drop-shadow-lg;
+  }
+  
+  .navigation-dot {
+    @apply w-3 h-3 rounded-full bg-opacity-30 bg-light-dark transition-all duration-300 cursor-pointer;
+  }
+  
+  .navigation-dot.active {
+    @apply bg-accent scale-125;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Font settings */
+.font-space {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.font-body {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Form styling */
+.form-field {
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.form-field input {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid rgba(245, 247, 255, 0.3);
+  padding: 12px 0;
+  width: 100%;
+  color: #F5F7FF;
+  transition: all 0.3s ease;
+}
+
+.form-field input:focus {
+  outline: none;
+  border-bottom-color: hsl(var(--accent));
+}
+
+.form-field label {
+  position: absolute;
+  top: 12px;
+  left: 0;
+  color: rgba(245, 247, 255, 0.7);
+  transition: all 0.3s ease;
+}
+
+.form-field input:focus + label,
+.form-field input:not(:placeholder-shown) + label {
+  top: -10px;
+  font-size: 12px;
+  color: hsl(var(--accent));
+}
+
+.form-field input::placeholder {
+  color: transparent;
+}
+
+/* GSAP animation classes */
+.slide-up {
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+.slide-in-right {
+  opacity: 0;
+  transform: translateX(50px);
+}
+
+.slide-in-left {
+  opacity: 0;
+  transform: translateX(-50px);
+}
+
+.fade-in {
+  opacity: 0;
+}
