@@ -2183,7 +2183,14 @@
   animation: pulseGlow 2s infinite;
   pointer-events: none;
 }
-
+/* Feature Section Logo Style */
+.logo-imgg {
+  width: 150px;
+  height: auto;
+  transition: transform 0.6s ease, filter 0.6s ease;
+  filter: brightness(1.1) contrast(1.1);
+}
+/* Feature Section Logo Style */
 @keyframes pulseGlow {
   0% {
     box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
@@ -2363,8 +2370,8 @@
       <div class="central-hub-container">
         <div class="central-hub">
           <div class="hub-ring"></div>
-          <div class="hub-icon">
-            <span> <img style=" height: 150px; width: 150px;" src="./logo.png"></span>
+          <div class="hub-icon" id="feature-logo">
+            <span> <img class="logo-imgg" style=" height: 150px; width: 150px;" src="./logo.png"></span>
           </div>
         </div>
         
@@ -3272,7 +3279,30 @@ document.addEventListener('DOMContentLoaded', function() {
     toggleActions: "play none none reverse"
   }
 });
+ document.addEventListener('DOMContentLoaded', function() {
+    gsap.from("#feature-logo", {
+      opacity: 0,
+      scale: 0.6,
+      y: 40,
+      duration: 1.2,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: "#feature-logo",
+        start: "top 80%",
+        end: "bottom 60%",
+        toggleActions: "play none none reverse"
+      }
+    });
 
+    // Optional: Add glowing pulse after animation
+    gsap.to("#feature-logo img", {
+      filter: "brightness(1.2) contrast(1.2) drop-shadow(0 0 10px rgba(59, 130, 246, 0.6))",
+      repeat: -1,
+      yoyo: true,
+      duration: 1.5,
+      ease: "power1.inOut"
+    });
+  });
   </script>
 </body>
 </html>
